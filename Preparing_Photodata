@@ -33,3 +33,4 @@ def extract_features(directory):
   features[image_id] = feature
   #print('>%s' % name)
  return features
+
