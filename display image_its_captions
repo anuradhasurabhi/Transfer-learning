@@ -1,0 +1,20 @@
+aptions = open(captions_path, 'r').read().split("\n")
+x_train = open(train_path, 'r').read().split("\n")
+# Loading captions as values and images as key in dictionary
+tokens = {}
+
+for ix in range(len(captions)-1):
+    temp = captions[ix].split("#")
+    if temp[0] in tokens:
+        tokens[temp[0]].append(temp[1][2:])
+    else:
+        tokens[temp[0]] = [temp[1][2:]]
+
+# displaying an image and captions given to it
+temp = captions[1].split("#")
+from IPython.display import Image, display
+z = Image(filename=images_path+temp[0])
+display(z)
+
+for ix in range(len(tokens[temp[0]])):
+    print(tokens[temp[0]][ix])
