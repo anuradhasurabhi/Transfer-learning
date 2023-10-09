@@ -1,0 +1,24 @@
+import tensorflow as tf
+pip install keras
+from numpy import array
+from pickle import load
+from keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from keras.utils import to_categorical
+from keras.utils import plot_model
+from keras.models import Model
+from keras.layers import Input, Dense, LSTM, Embedding, Dropout
+from keras.layers import concatenate
+from keras.callbacks import ModelCheckpoint
+import matplotlib.pyplot as plt
+images_dir = os.listdir("drive/My Drive/Flickr_Data40")
+
+images_path = 'drive/My Drive/Flickr_Data40/Images/'
+captions_path = 'drive/My Drive/Flickr_Data40/Flickr_TextData/Flickr8k.token.txt'
+train_path = 'drive/My Drive/Flickr_Data40/Flickr_TextData/Flickr_8k.trainImages.txt'
+val_path = 'drive/My Drive/Flickr_Data40/Flickr_TextData/Flickr_8k.devImages.txt'
+test_path = 'drive/My Drive/Flickr_Data40/Flickr_TextData/Flickr_8k.testImages.txt'
+new_img1 = 'drive/My Drive/Flickr_Data40/test_example1.jpg'
+new_img2 = 'drive/My Drive/Flickr_Data40/test_example2.jpg'
+new_img3 = 'drive/My Drive/Flickr_Data40/test_example3.jpg'
+img1 = 'drive/My Drive/Flickr_Data40/img1.jpg'
