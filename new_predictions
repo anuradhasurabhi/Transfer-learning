@@ -1,0 +1,28 @@
+def extract_features(filename):
+ # load the model
+ model = VGG16()
+ # re-structure the model
+ #model.layers.pop()
+ model = Model(inputs=model.inputs, outputs=model.layers[-2].output)
+ # load the photo
+ image = load_img(filename, target_size=(224, 224))
+ # convert the image pixels to a numpy array
+ image = img_to_array(image)
+ # reshape data for the model
+ image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
+ # prepare the image for the VGG model
+ image = preprocess_input(image)
+ # get features
+ feature = model.predict(image, verbose=0)
+ return feature
+
+# load the model
+model = load_model('model-ep014-loss2.569-val_loss4.723.h5')
+# load and prepare the photograph
+photo = extract_features(new_img2)
+from IPython.display import Image, display
+z = Image(filename=new_img2)
+display(z)
+# generate description
+description = generate_desc(model, tokenizer, photo, maxlength)
+print(description)
